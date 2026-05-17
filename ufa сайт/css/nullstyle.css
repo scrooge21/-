@@ -1,0 +1,79 @@
+/*обнуляющие стили*/
+/* Обнуление отступов и отступов между элементами */
+body,
+div,
+p,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+/* Обнуление границ и свойства outline */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Обнуление стиля списка */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Обнуление стиля ссылок */
+a {
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при нажатии на iOS */
+    user-select: none; /* Убирает выделение при нажатии на других устройствах */
+    line-height: normal;
+    text-decoration: none;
+    color: black;
+}
+/*a:hover{*/
+/*    color: var(--tealblue);*/
+
+/*}*/
+
+/* Обнуление стиля заголовков */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+/* Обнуление стиля кнопок */
+button,
+input[type="button"],
+input[type="submit"] {
+    border: none;
+    /*background: none;*/
+    /*padding: 0;*/
+    cursor: pointer;
+    outline: none;
+}
+
+/* Обнуление стиля изображений */
+img {
+    max-width: 100%;
+    height: auto;
+}
+/* конец обнуляющих стилей*/

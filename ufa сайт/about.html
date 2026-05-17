@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании Чистоград — профессиональная автомойка в Уфе</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+ 
+/* Если на мобилках хедер другой высоты, можно подправить */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; 
+    }
+}
+        :root {
+            --primary: #DC2B1B;
+            --primary-dark: #A91E12;
+            --dark: #1a1a1a;
+            --bg-light: #f5f5f5;
+            --text: #2C2C2C;
+            --font: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); color: var(--text); line-height: 1.6; background: #fff; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-weight: 800; text-transform: uppercase; }
+
+               /* ШАПКА */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 26, 0.95); /* Темный полупрозрачный фон */
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 10px 0;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Логотип */
+    .logo-block {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+    }
+
+    .logo {
+        font-size: 26px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: var(--primary);
+    }
+
+    .logo-sub {
+        font-size: 9px;
+        text-transform: uppercase;
+        color: #ccc;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+        font-weight: 500;
+    }
+
+    /* Навигация */
+    .nav {
+        display: flex;
+        gap: 25px;
+    }
+
+    .nav a {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        transition: color 0.3s;
+    }
+
+    .nav a:hover {
+        color: var(--primary);
+    }
+
+    /* Правая часть */
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .phone {
+        font-weight: 800;
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    /* Блок "Работаем 24" */
+    .work-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .icon-clock {
+        width: 28px;
+        height: 28px;
+    }
+
+    .status-text {
+        display: flex;
+        flex-direction: column;
+        font-size: 9px;
+        text-transform: uppercase;
+        line-height: 1.2;
+        font-weight: 800;
+    }
+
+    /* Кнопка с иконкой TG */
+    .btn-header {
+        background-color: var(--primary);
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-header:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .icon-tg {
+        width: 18px;
+        height: 18px;
+    }
+        /* БЛОКИ ТЕКСТА */
+        .about-section { padding: 80px 0; }
+        .section-title { font-size: 32px; margin-bottom: 25px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 120px; height: 5px; background: var(--primary); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); }
+
+        /* БАННЕР С КРАСНОЙ КОЖЕЙ */
+        .about-banner {
+            display: flex; width: 100%; min-height: 400px; margin: 60px 0;
+        }
+        .banner-left {
+            flex: 1.2; background: url('images/leather.png') center/cover;
+            display: flex; justify-content: flex-end; align-items: center; padding: 60px 40px; color: #fff;
+        }
+        .banner-content-box { max-width: 600px; }
+        .banner-right {
+            flex: 0.8; background: url('images/background.png') center/cover; position: relative;
+        }
+        .banner-car-img {
+            position: absolute; left: -10%; top: 50%; transform: translateY(-50%);
+            height: 110%; object-fit: contain; z-index: 5;
+        }
+
+        /* ПРЕИМУЩЕСТВА (ГРИД) */
+        .adv-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;
+        }
+        .adv-item { display: flex; flex-direction: column; gap: 15px; }
+        .adv-icon { width: 40px; height: 30px; fill: var(--primary); }
+        .adv-item h3 { font-size: 18px; color: var(--dark); }
+        .adv-item p { font-size: 14px; font-weight: 500; color: #555; }
+
+        /* ОТЗЫВЫ */
+        .reviews-section { background: var(--bg-light); padding: 80px 0; }
+        .reviews-slider { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 30px; scroll-snap-type: x mandatory; }
+        .review-card { 
+            background: #fff; padding: 30px; border-radius: 10px; min-width: 350px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); scroll-snap-align: start;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .review-text { font-size: 14px; margin-bottom: 20px; font-style: italic; }
+        .review-footer { border-top: 1px solid #eee; padding-top: 15px; display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; color: var(--primary); }
+
+        /* ФУТЕР */
+        .footer { background: var(--dark); color: #fff; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+        .footer h3 { font-size: 16px; margin-bottom: 20px; color: #fff; }
+        .footer a { color: #999; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.3s; }
+        .footer a:hover { color: var(--primary); }
+
+        /* МОБИЛЬНАЯ ВЕРСИЯ */
+        @media (max-width: 992px) {
+            .about-banner { flex-direction: column-reverse; }
+            .banner-left { justify-content: center; text-align: center; }
+            .banner-right { height: 250px; }
+            .banner-car-img { left: 50%; transform: translate(-50%, -50%); height: 100%; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+     <header class="header">
+    <div class="container">
+        <!-- Логотип с подзаголовком -->
+        <div class="logo-block">
+            <a href="index.html" class="logo">ЧИСТО<span>ГРАД</span></a>
+            <span class="logo-sub">автомобильный детейлинг</span>
+        </div>
+
+        <!-- Навигация -->
+        <nav class="nav">
+            <a href="about.html">О нас</a>
+            <a href="services.html">Услуги</a>
+            <a href="price.html">Цены</a>
+            <a href="blog.html">Блог</a>
+            <a href="contacts.html">Контакты</a>
+        </nav>
+
+        <!-- Контакты и статус -->
+        <div class="header-right">
+            <a href="tel:+73472663663" class="phone">+7 (347) 266‒36‒63</a>
+            
+            <div class="work-status">
+             
+                <div class="status-text">
+                    <span>Работаем</span>
+                    <span>круглосуточно</span>
+                </div>
+            </div>
+
+            <a href="https://t.me/ChistogradAMK" target="_blank" class="btn-header">
+                <svg class="icon-tg" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 8.146l-1.92 8.941c-.145.628-.512.786-1.038.491l-2.922-2.148-1.41 1.354c-.155.155-.285.285-.585.285l.209-2.964 5.407-4.88c.232-.21-.051-.326-.356-.118l-6.68 4.201-2.871-.894c-.628-.198-.641-.628.131-.926l11.218-4.321c.519-.191.974.124.818.979z"/>
+                </svg>
+                Записаться
+            </a>
+        </div>
+    </div>
+</header>
+
+    <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+    <div class="page-header">
+       <div class="container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a>
+            <span class="sep">
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M1 1L6 6L1 11" stroke="white" stroke-width="2" stroke-opacity="0.6"/></svg>
+            </span>
+            <span class="current">О нас</span>
+        </div>
+        
+        <!-- Заголовок -->
+        <h1 class="page-title">О нас</h1>
+    </div>
+    </div>
+<style>
+    /* Настройка шрифта для заголовка (если файл Venus Rising лежит в fonts) */
+    @font-face {
+        font-family: "Venus Rising";
+        src: url('fonts/venus_rising_rg.otf') format("opentype");
+    }
+
+    .page-header {
+        width: 100%;
+        min-height: 200px; /* Высота баннера */
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), 
+                    url('images/header-background.png') center/cover no-repeat;
+        
+        /* Убираем центрирование, используем отступы */
+        display: block; 
+        padding-top: 130px; /* Отступ сверху, чтобы текст был под хедером */
+        padding-bottom: 50px;
+        position: relative;
+    }
+     .page-header .container {
+        /* Принудительно выравниваем всё содержимое контейнера по левому краю */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+        text-align: left;
+    }
+
+    /* Хлебные крошки */
+    .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .breadcrumbs a, .breadcrumbs .current {
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: none;
+        color: #fff;
+    }
+
+    .breadcrumbs a {
+        opacity: 0.6;
+        transition: opacity 0.3s;
+    }
+
+    .breadcrumbs a:hover {
+        opacity: 1;
+    }
+
+    .breadcrumbs .sep {
+        display: flex;
+        align-items: center;
+    }
+
+    .breadcrumbs .current {
+        opacity: 0.8;
+    }
+
+    /* Стилизация основного текста "О нас" */
+    .page-title {
+        font-family: "Venus Rising", "Montserrat", sans-serif; /* Venus Rising дает тот самый вид */
+        font-size: 48px;
+        color: #fff;
+        margin: 0;
+        letter-spacing: 2px;
+        text-transform: none; /* Убираем капс, если в шрифте он и так есть */
+    }
+
+    /* Адаптив для мобильных устройств */
+    @media (max-width: 768px) {
+        .page-header {
+            min-height: 200px;
+            background-image: url('images/header-backgroung-mobile.png'); /* Используем мобильный фон */
+            padding-top: 80px;
+        }
+
+        .page-title {
+            font-size: 32px;
+        }
+
+        .breadcrumbs {
+            gap: 10px;
+        }
+    }
+</style>
+    <!-- ПЕРВЫЙ БЛОК ТЕКСТА -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Чистота автомобиля – залог успеха</h2>
+            <p style="font-weight: 500; font-size: 18px;">
+                Автомобиль нужно содержать в чистоте. За заботу он «отблагодарит» хозяина – будет долго и верно служить. 
+                Да и самому приятно пользоваться чистой привлекательной техникой. Поверхность кузова, на которой присутствует слой грязи, 
+                подвержена быстрому старению. При попадании влаги на высохшую грязь создается влажная «примочка» из кислот и щелочей, 
+                разрушающих лакокрасочное покрытие.
+            </p>
+        </div>
+    </section>
+
+    <!-- БАННЕР С КРАСНОЙ КОЖЕЙ -->
+    <div class="about-banner">
+        <div class="banner-left">
+            <div class="banner-content-box">
+                <h2 style="font-size: 28px; margin-bottom: 20px;">Чистоград – известная автомойка в Уфе</h2>
+                <hr style="width: 80px; height: 4px; background: #fff; border:none; margin-bottom: 20px;">
+                <p style="font-weight: 500;">
+                    Компания «Чистоград» поможет Вам поддерживать автомобиль в идеальном состоянии. Мы работаем круглосуточно. 
+                    Одновременно в нашем помещении может обслуживаться до восьми машин. Мы используем только проверенные технологии: 
+                    вода, качественный шампунь и бережная сушка компрессором.
+                </p>
+            </div>
+        </div>
+        <div class="banner-right">
+            <!-- Картинка машины front.png -->
+            <img src="images/front.png" alt="Машина" class="banner-car-img">
+        </div>
+    </div>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="adv-grid">
+                <div class="adv-item">
+                    <svg class="adv-icon" viewBox="0 0 43 32"><path d="M0 14.17l3.21-3.21 14.46 14.46L39.14.96l3.21 3.21-24.67 27.68L0 14.17z"/></svg>
+                    <h3>Качество</h3>
+                    <p>Мы используем современное оборудование и премиальные составы для мойки.</p>
+                </div>
+                <div class="adv-item">
+                    <svg class="adv-icon" viewBox="0 0 43 32"><path d="M0 14.17l3.21-3.21 14.46 14.46L39.14.96l3.21 3.21-24.67 27.68L0 14.17z"/></svg>
+                    <h3>Сервис</h3>
+                    <p>Наши специалисты имеют многолетний опыт работы с автомобилями любого класса.</p>
+                </div>
+                <div class="adv-item">
+                    <svg class="adv-icon" viewBox="0 0 43 32"><path d="M0 14.17l3.21-3.21 14.46 14.46L39.14.96l3.21 3.21-24.67 27.68L0 14.17z"/></svg>
+                    <h3>Стоимость</h3>
+                    <p>Демократичные цены при неизменно высоком качестве исполнения работ.</p>
+                </div>
+                <div class="adv-item">
+                    <svg class="adv-icon" viewBox="0 0 43 32"><path d="M0 14.17l3.21-3.21 14.46 14.46L39.14.96l3.21 3.21-24.67 27.68L0 14.17z"/></svg>
+                    <h3>Комфорт</h3>
+                    <p>Уютная зона ожидания с кофе, чаем и бесплатным Wi-Fi для наших гостей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+<section id="reviews" class="reviews-section">
+    <div class="container">
+        <div class="reviews-top-row">
+            <h2 class="reviews-title">Что говорят <br>наши клиенты</h2>
+            
+            <!-- Панель рейтингов с эффектом стекла -->
+            <div class="ratings-glass-panel">
+                <div class="rating-item">
+                    <span class="icon-circle yandex">Я</span>
+                    <div class="rating-info">Яндекс карты <b>4,8</b></div>
+                </div>
+                <div class="rating-item">
+                    <span class="icon-circle dgis">2Gis</span>
+                    <div class="rating-info">2Gis <b>4,7</b></div>
+                </div>
+                <div class="rating-item">
+                    <span class="icon-circle flamp">F</span>
+                    <div class="rating-info">Flamp <b>4,5</b></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контейнер для карточек -->
+        <div class="reviews-grid">
+            <!-- Отзыв 1 -->
+            <div class="review-card anim-fade-up">
+                <div class="review-content">
+                    Очень качественное обслуживание. Всё быстро и на высшем уровне. Теперь только в Чистоград 👍
+                </div>
+                <div class="review-footer">
+                    <div class="stars">★★★★★</div>
+                    <div class="platform">
+                        <img src="images/2gis-logo.png" alt="" class="mini-icon"> 2Gis
+                    </div>
+                    <div class="author">Ivan Generalov</div>
+                    <div class="date">18.11.2024</div>
+                </div>
+            </div>
+
+            <!-- Отзыв 2 -->
+            <div class="review-card anim-fade-up" style="transition-delay: 0.1s;">
+                <div class="review-content">
+                    Отличный авто моечный комплекс! Мою автомобили не первый год. Условия моечной зоны хорошие (оборудование, освещение, ремонт). Цены приемлемые.
+                </div>
+                <div class="review-footer">
+                    <div class="stars">★★★★★</div>
+                    <div class="platform">
+                        <img src="images/yandex-logo.png" alt="" class="mini-icon"> Yandex
+                    </div>
+                    <div class="author">Дмитрий В.</div>
+                    <div class="date">17.11.2024</div>
+                </div>
+            </div>
+
+            <!-- Отзыв 3 -->
+            <div class="review-card anim-fade-up" style="transition-delay: 0.2s;">
+                <div class="review-content">
+                    Пользуюсь услугами данной автомойки не первый раз, коллектив вежливый, всегда учтут пожелания клиента! Буду приезжать ещё :)
+                </div>
+                <div class="review-footer">
+                    <div class="stars">★★★★★</div>
+                    <div class="platform">
+                        <img src="images/google-logo.png" alt="" class="mini-icon"> Google
+                    </div>
+                    <div class="author">Алёнка</div>
+                    <div class="date">13.11.2024</div>
+                </div>
+            </div>
+
+            <!-- Отзыв 4 -->
+            <div class="review-card anim-fade-up" style="transition-delay: 0.3s;">
+                <div class="review-content">
+                    Отличная автомойка заехала по рекомендации друзей 👌 Быстро, хорошо моют, хороший сервис и персонал, цены приятные. Рекомендую. Круглосуточная.
+                </div>
+                <div class="review-footer">
+                    <div class="stars">★★★★★</div>
+                    <div class="platform">
+                        <img src="images/yandex-logo.png" alt="" class="mini-icon"> Yandex
+                    </div>
+                    <div class="author">Екатерина Стенина</div>
+                    <div class="date">24.11.2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .reviews-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/reviews-bg.webp') center/cover no-repeat fixed;
+        padding: 100px 0;
+        color: #fff;
+    }
+
+    .reviews-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 50px;
+    }
+
+    .reviews-title {
+        font-size: 36px;
+        margin: 0;
+        text-align: left;
+    }
+
+    /* Верхняя панель с рейтингами */
+    .ratings-glass-panel {
+        display: flex;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        padding: 15px 30px;
+        border-radius: 50px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .rating-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .icon-circle {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        background: #fff;
+        color: #000;
+        font-size: 12px;
+    }
+    .icon-circle.yandex { color: #DC2B1B; }
+    .icon-circle.dgis { color: #19AA1E; }
+
+    /* Сетка отзывов */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    /* Карточка отзыва */
+    .review-card {
+        background: #fff;
+        color: #2C2C2C;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        min-height: 350px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        opacity: 0; /* Для анимации */
+        transform: translateY(30px); /* Для анимации */
+    }
+
+    .review-card:hover {
+        transform: translateY(-10px) !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .review-content {
+        padding: 30px;
+        flex-grow: 1;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .review-footer {
+        background: #F8F8F8;
+        padding: 20px 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .stars { color: #FFCC00; font-size: 18px; }
+    .platform { text-align: right; font-size: 12px; color: #999; font-weight: bold; }
+    .author { font-weight: 700; color: #2C2C2C; }
+    .date { text-align: right; color: #999; font-size: 12px; }
+    
+    .mini-icon { width: 14px; vertical-align: middle; margin-right: 5px; }
+
+    /* Класс для активации анимации через JS */
+    .review-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Адаптив */
+    @media (max-width: 992px) {
+        .reviews-top-row { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+        .reviews-title { text-align: center; }
+    }
+</style>
+
+<script>
+    // Простой скрипт для запуска анимации при скролле
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.review-card').forEach(card => {
+            observer.observe(card);
+        });
+    });
+</script>
+
+    <!-- ПОСЛЕДНИЙ БЛОК ТЕКСТА -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Почему не из ведра?</h2>
+            <p style="margin-bottom: 20px; font-weight: 500;">
+                Мы применяем бесконтактную мойку сильной струей воды. Это исключает появление микроцарапин на кузове. 
+                В процессе мойки вы можете отдохнуть в нашей комнате отдыха, выпить кофе и посмотреть ТВ. 
+                Ваши ключи можно передать менеджеру, и мы сами подготовим машину к вашему выходу.
+            </p>
+            <h3 style="color: var(--primary); margin-top: 30px;">Наши клиенты становятся постоянными!</h3>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2 style="font-size: 20px;">ЧИСТО<span>ГРАД</span></h2>
+                    <p style="color: #666; font-size: 12px; margin-top: 10px;">Профессиональный уход за вашим авто в Уфе.</p>
+                </div>
+                <div>
+                    <h3>Меню</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О нас</a>
+                    <a href="#">Услуги</a>
+                </div>
+                <div>
+                    <h3>Услуги</h3>
+                    <a href="#">Мойка кузова</a>
+                    <a href="#">Химчистка</a>
+                    <a href="#">Полировка</a>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <a href="tel:+73472663663" style="color: #fff; font-weight: 700;">+7 (347) 266-36-63</a>
+                    <p style="color: #666; font-size: 14px;">ул. Бакалинская, 13/1</p>
+                </div>
+            </div>
+            <p>© 2026 Чистоград. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
