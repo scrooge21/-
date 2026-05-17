@@ -862,6 +862,136 @@
         .price-grid { grid-template-columns: 1fr; gap: 50px; }
         .price-card.popular { transform: scale(1); }
     }
+    /* НОВЫЕ СТИЛИ ОТЗЫВОВ */
+.reviews-new {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/reviews-bg.webp') center/cover fixed;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.reviews-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Стеклянная панель рейтингов */
+.ratings-glass {
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rating-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 8px 20px 8px 8px;
+    border-radius: 40px;
+    transition: 0.3s;
+}
+
+.rating-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+.rt-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: #fff;
+    font-size: 12px;
+}
+.rt-icon.yan { background: #DC2B1B; }
+.rt-icon.dgis { background: #19AA1E; }
+.rt-icon.flamp { background: #2E6BE5; }
+
+.rt-info { color: #2C2C2C; font-size: 13px; font-weight: 500; }
+.rt-info b { font-size: 16px; margin-left: 5px; }
+
+/* Сетка карточек */
+.reviews-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.review-item-new {
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0; /* Для анимации */
+    transform: translateY(40px); /* Для анимации */
+}
+
+.review-item-new:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.rev-stars { color: #FFCC00; font-size: 18px; margin-bottom: 15px; }
+
+.rev-content p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.rev-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rev-user { display: flex; align-items: center; gap: 12px; }
+
+.rev-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.rev-name { font-weight: 700; font-size: 14px; color: #2C2C2C; }
+.rev-date { font-size: 12px; color: #999; font-weight: 600; }
+
+/* Класс активации анимации */
+.review-item-new.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .reviews-header-row { justify-content: center; text-align: center; }
+    .ratings-glass { flex-direction: column; border-radius: 20px; width: 100%; }
+    .review-item-new { padding: 25px; }
+}
 </style>
 
     <!-- ДО И ПОСЛЕ -->
@@ -892,42 +1022,111 @@
     </section>
 
     <!-- ОТЗЫВЫ И РЕЙТИНГИ -->
-    <section id="reviews" class="reviews">
-        <div class="container">
-            <h2 class="section-title" style="color: #fff;">Нас оценивают</h2>
+   <!-- ОТЗЫВЫ И РЕЙТИНГИ -->
+<section id="reviews" class="reviews-new">
+    <div class="container">
+        <div class="reviews-header-row">
+            <h2 class="section-title" style="text-align: left; color: #fff; margin-bottom: 0;">Нас оценивают</h2>
             
-            <div class="ratings-flex">
-                <a href="https://yandex.ru/maps/org/chistograd/1008662854/reviews" target="_blank" class="rating-badge">
-                    <span style="color:#DC2B1B;">Я</span> Яндекс.Карты <b style="font-size:24px; margin-left: 10px;">4.8</b>
+            <!-- Панель рейтингов -->
+            <div class="ratings-glass">
+                <a href="https://yandex.ru/maps/org/chistograd/1008662854/reviews" target="_blank" class="rating-pill">
+                    <span class="rt-icon yan">Я</span>
+                    <div class="rt-info">Яндекс <b>4.8</b></div>
                 </a>
-                <a href="#" class="rating-badge">
-                    <span style="color:#19AA1E; font-size: 16px;">2GIS</span> 2GIS <b style="font-size:24px; margin-left: 10px;">4.7</b>
+                <a href="#" class="rating-pill">
+                    <span class="rt-icon dgis">2G</span>
+                    <div class="rt-info">2GIS <b>4.7</b></div>
                 </a>
-                <a href="#" class="rating-badge">
-                    <span style="color:#2E6BE5; font-size: 16px;">F</span> Flamp <b style="font-size:24px; margin-left: 10px;">4.5</b>
+                <a href="#" class="rating-pill">
+                    <span class="rt-icon flamp">F</span>
+                    <div class="rt-info">Flamp <b>4.5</b></div>
                 </a>
             </div>
+        </div>
 
-            <div class="reviews-slider">
-                <div class="review-card">
-                    <p class="review-text">Очень качественное обслуживание. Всё быстро и на высшем уровне. Теперь только в Чистоград 👍</p>
-                    <div class="review-author">Ivan Generalov <span class="review-date">18.11.2024</span></div>
+        <div class="reviews-grid-new">
+            <!-- Карточка 1 -->
+            <div class="review-item-new animate-on-scroll">
+                <div class="rev-content">
+                    <div class="rev-stars">★★★★★</div>
+                    <p>"Очень качественное обслуживание. Всё быстро и на высшем уровне. Теперь только в Чистоград 👍"</p>
                 </div>
-                <div class="review-card">
-                    <p class="review-text">Отличный автомоечный комплекс! Мою автомобили не первый год. Условия моечной зоны хорошие (оборудование, освещение, ремонт). Цены приемлемые.</p>
-                    <div class="review-author">Дмитрий В. <span class="review-date">17.11.2024</span></div>
+                <div class="rev-footer">
+                    <div class="rev-user">
+                        <div class="rev-avatar">IG</div>
+                        <div class="rev-name">Ivan Generalov</div>
+                    </div>
+                    <div class="rev-date">18.11.2024</div>
                 </div>
-                <div class="review-card">
-                    <p class="review-text">Пользуюсь услугами данной автомойки не первый раз, коллектив вежливый, всегда учтут пожелания клиента! Буду приезжать ещё :)</p>
-                    <div class="review-author">Азамат Ахтямов <span class="review-date">21.11.2024</span></div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="review-item-new animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="rev-content">
+                    <div class="rev-stars">★★★★★</div>
+                    <p>"Отличный автомоечный комплекс! Мою автомобили не первый год. Условия моечной зоны хорошие. Цены приемлемые."</p>
                 </div>
-                <div class="review-card">
-                    <p class="review-text">Отличная автомойка заехала по рекомендации друзей👌 Быстро, хорошо моют, хороший сервис и цены приятные.</p>
-                    <div class="review-author">Алёнка <span class="review-date">13.11.2024</span></div>
+                <div class="rev-footer">
+                    <div class="rev-user">
+                        <div class="rev-avatar">ДВ</div>
+                        <div class="rev-name">Дмитрий В.</div>
+                    </div>
+                    <div class="rev-date">17.11.2024</div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="review-item-new animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="rev-content">
+                    <div class="rev-stars">★★★★★</div>
+                    <p>"Пользуюсь услугами не первый раз, коллектив вежливый, всегда учтут пожелания клиента! Буду приезжать ещё :)"</p>
+                </div>
+                <div class="rev-footer">
+                    <div class="rev-user">
+                        <div class="rev-avatar">AA</div>
+                        <div class="rev-name">Азамат Ахтямов</div>
+                    </div>
+                    <div class="rev-date">21.11.2024</div>
+                </div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="review-item-new animate-on-scroll" style="transition-delay: 0.3s;">
+                <div class="rev-content">
+                    <div class="rev-stars">★★★★★</div>
+                    <p>"Отличная автомойка заехала по рекомендации друзей👌 Быстро, хорошо моют, сервис и цены приятные."</p>
+                </div>
+                <div class="rev-footer">
+                    <div class="rev-user">
+                        <div class="rev-avatar">АЛ</div>
+                        <div class="rev-name">Алёнка</div>
+                    </div>
+                    <div class="rev-date">13.11.2024</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>
 
     <!-- О НАШЕМ СЕРВИСЕ (БЛОК С 3 ФОТО) -->
     <section style="background: #fff;">
