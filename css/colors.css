@@ -1,0 +1,11 @@
+:root{
+    --vivid: #DC2B1B;
+    --darkvivid: #A91E12;
+    --gray: #A6A6A6;
+    --graytext: #9D9D9D;
+    --maintext: #2C2C2C;
+    --gradient:linear-gradient(to right, #C92D1F, #DC2B1B);
+    --lightgray: #F0F0F0;
+    --transparent:rgba(255, 255, 255, 0.1);
+    --transparentdark:rgba(255, 255, 255, 0.3);
+}

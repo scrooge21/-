@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги автомойки в Уфе — Чистоград</title>
+    <meta name="description" content="Услуги по мойке автомобилей в Уфе. Бесконтактная мойка, химчистка, детейлинг. Современное оборудование и премиальное качество.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #DC2B1B;
+            --primary-dark: #A91E12;
+            --dark: #1a1a1a;
+            --bg-light: #f5f5f5;
+            --text: #2C2C2C;
+            --font: 'Montserrat', sans-serif;
+        }
+
+        @font-face {
+            font-family: "Venus Rising";
+            src: url('fonts/venus_rising_rg.otf') format("opentype");
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); color: var(--text); line-height: 1.6; background: #fff; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-weight: 800; text-transform: uppercase; }
+
+        /* ШАПКА (КАК НА INDEX.HTML) */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
+            z-index: 1000; padding: 10px 0; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-block { display: flex; flex-direction: column; line-height: 1; }
+        .logo { font-size: 26px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
+        .logo-sub { font-size: 9px; text-transform: uppercase; color: #ccc; letter-spacing: 0.5px; margin-top: 2px; font-weight: 500; }
+        .nav { display: flex; gap: 25px; }
+        .nav a { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #fff; transition: color 0.3s; }
+        .nav a:hover { color: var(--primary); }
+        .header-right { display: flex; align-items: center; gap: 30px; }
+        .phone { font-weight: 800; font-size: 18px; white-space: nowrap; }
+        .work-status { display: flex; align-items: center; gap: 10px; }
+        .status-text { display: flex; flex-direction: column; font-size: 9px; text-transform: uppercase; line-height: 1.2; font-weight: 800; }
+        .btn-header {
+            background-color: var(--primary); color: #fff; padding: 12px 25px; border-radius: 50px;
+            font-size: 13px; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .btn-header:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .icon-tg { width: 18px; height: 18px; }
+
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-header {
+            width: 100%; min-height: 200px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/header-background.png') center/cover no-repeat;
+            padding-top: 130px; padding-bottom: 50px;
+        }
+        .breadcrumbs { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: #fff; font-size: 14px; }
+        .breadcrumbs a { opacity: 0.6; color: #fff; }
+        .page-title { font-family: "Venus Rising", "Montserrat", sans-serif; font-size: 48px; color: #fff; margin: 0; letter-spacing: 2px; }
+
+        /* УСЛУГИ - КОНТЕНТ */
+        .services-section { padding: 80px 0; background: var(--bg-light); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        
+        .service-card { 
+            background: #fff; border-radius: 10px; overflow: hidden; 
+            transition: 0.4s; display: flex; flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        .card-img-wrap { width: 100%; height: 240px; overflow: hidden; clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%, 0 40px); }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .service-card:hover .card-img-wrap img { transform: scale(1.1); }
+
+        .card-content { padding: 30px; display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+        .card-content h3 { font-size: 18px; color: var(--dark); line-height: 1.2; }
+        .card-more { 
+            margin-top: auto; display: flex; align-items: center; gap: 10px; 
+            color: #999; font-weight: 700; font-size: 13px; text-transform: uppercase;
+        }
+        .service-card:hover .card-more { color: var(--primary); }
+
+        .btn-load-more {
+            display: block; width: 220px; margin: 50px auto 0; text-align: center;
+            padding: 15px; border: 2px solid var(--primary); color: var(--primary);
+            font-weight: 800; text-transform: uppercase; border-radius: 5px; transition: 0.3s; cursor: pointer;
+        }
+        .btn-load-more:hover { background: var(--primary); color: #fff; }
+
+        /* ФУТЕР */
+        .footer { background: var(--dark); color: #fff; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+        .footer h3 { font-size: 16px; margin-bottom: 20px; }
+        .footer a { color: #999; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.3s; }
+        .footer a:hover { color: var(--primary); }
+
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav, .header-right .work-status { display: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .page-title { font-size: 32px; }
+        }
+        @media (max-width: 576px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-block">
+                <a href="index.html" class="logo">ЧИСТО<span>ГРАД</span></a>
+                <span class="logo-sub">автомобильный детейлинг</span>
+            </div>
+            <nav class="nav">
+                <a href="about.html">О нас</a>
+                <a href="services.html" style="color: var(--primary);">Услуги</a>
+                <a href="price.html">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="header-right">
+                <a href="tel:+73472663663" class="phone">+7 (347) 266‒36‒63</a>
+                <div class="work-status">
+                    <div class="status-text">
+                        <span>Работаем</span>
+                        <span>круглосуточно</span>
+                    </div>
+                </div>
+                <a href="https://t.me/ChistogradAMK" target="_blank" class="btn-header">
+                    <svg class="icon-tg" viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 8.146l-1.92 8.941c-.145.628-.512.786-1.038.491l-2.922-2.148-1.41 1.354c-.155.155-.285.285-.585.285l.209-2.964 5.407-4.88c.232-.21-.051-.326-.356-.118l-6.68 4.201-2.871-.894c-.628-.198-.641-.628.131-.926l11.218-4.321c.519-.191.974.124.818.979z"/></svg>
+                    Записаться
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ЗАГОЛОВОК -->
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a>
+                <svg width="6" height="10" viewBox="0 0 8 12" fill="none"><path d="M1 1L6 6L1 11" stroke="white" stroke-width="2" stroke-opacity="0.6"/></svg>
+                <span>Услуги</span>
+            </div>
+            <h1 class="page-title">Наши услуги</h1>
+        </div>
+    </div>
+
+    <!-- СПИСОК УСЛУГ -->
+    <main class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/pomJkFoxWHPV52U7td3lPebIlb2EB2bnUv6olTiE.jpg" alt="Бесконтактная мойка">
+                    </div>
+                    <div class="card-content">
+                        <h3>Бесконтактная мойка</h3>
+                        <p>Приведем в порядок машину быстро, качественно и без повреждения ЛКП.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/WWgUgioWvRNLjXpm09p8F2pX9nDo1lVpbLqbSqAu.jpg" alt="Мойка двигателя">
+                    </div>
+                    <div class="card-content">
+                        <h3>Мойка двигателя</h3>
+                        <p>Безопасная очистка подкапотного пространства с применением диэлектрических составов.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/8IlnojbspYvvkaD7JleFHmER1d2xwNjM1GMClgLq.jpg" alt="Чистка салона">
+                    </div>
+                    <div class="card-content">
+                        <h3>Чистка салона</h3>
+                        <p>Профессиональная уборка и уход за интерьером вашего автомобиля.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/hvLSYhiguvIAWquIhNXo2cisd3IAd8g2ttcyCYd6.jpg" alt="Комплексная мойка">
+                    </div>
+                    <div class="card-content">
+                        <h3>Комплексная мойка</h3>
+                        <p>Полный цикл ухода за кузовом и салоном для идеального результата.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/eWpTqEmxDItjF7kxZxWMAeSsDc2wxi30LruwlDkw.jpg" alt="Очистка кузова">
+                    </div>
+                    <div class="card-content">
+                        <h3>Очистка кузова</h3>
+                        <p>Удаление битума, металлических вкраплений и дорожных реагентов.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-img-wrap">
+                        <img src="images/AvJVfHUhSLPli2xMtEYErhMYpPCNQTReYhAAbMOL.jpg" alt="Чистка стекол">
+                    </div>
+                    <div class="card-content">
+                        <h3>Чистка стекол</h3>
+                        <p>Кристальная чистота стекол для отличной видимости и безопасности.</p>
+                        <a href="#" class="card-more">Подробнее →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="btn-load-more">Показать больше</div>
+        </div>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2 style="font-size: 20px;">ЧИСТО<span>ГРАД</span></h2>
+                    <p style="color: #666; font-size: 12px; margin-top: 10px;">Профессиональный детейлинг в Уфе.</p>
+                </div>
+                <div>
+                    <h3>Меню</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О нас</a>
+                    <a href="price.html">Цены</a>
+                </div>
+                <div>
+                    <h3>Услуги</h3>
+                    <a href="#">Мойка кузова</a>
+                    <a href="#">Химчистка</a>
+                    <a href="#">Полировка</a>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <a href="tel:+73472663663" style="color: #fff; font-weight: 700;">+7 (347) 266-36-63</a>
+                    <p style="color: #666; font-size: 14px;">ул. Бакалинская, 13/1</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: #555; font-size: 12px; margin-top: 20px;">© 2026 Чистоград. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

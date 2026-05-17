@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены на услуги автомойки в Уфе — Чистоград</title>
+    <meta name="description" content="Цены на услуги автомойки в Уфе: мойка кузова, химчистка салона, полировка. Подробный прайс-лист Чистоград.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #DC2B1B;
+            --primary-dark: #A91E12;
+            --dark: #1a1a1a;
+            --bg-light: #f5f5f5;
+            --text: #2C2C2C;
+            --font: 'Montserrat', sans-serif;
+        }
+
+        @font-face {
+            font-family: "Venus Rising";
+            src: url('fonts/venus_rising_rg.otf') format("opentype");
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); color: var(--text); line-height: 1.6; background: #fff; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-weight: 800; text-transform: uppercase; }
+
+        /* ШАПКА (как на остальных страницах) */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
+            z-index: 1000; padding: 10px 0; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-block { display: flex; flex-direction: column; line-height: 1; }
+        .logo { font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
+        .logo-sub { font-size: 9px; text-transform: uppercase; color: #ccc; letter-spacing: 0.5px; margin-top: 2px; font-weight: 500; }
+        .nav { display: flex; gap: 25px; }
+        .nav a { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #fff; transition: color 0.3s; }
+        .nav a:hover { color: var(--primary); }
+        .header-right { display: flex; align-items: center; gap: 30px; }
+        .phone { font-weight: 800; font-size: 18px; white-space: nowrap; }
+        .work-status { display: flex; align-items: center; gap: 10px; }
+        .status-text { display: flex; flex-direction: column; font-size: 9px; text-transform: uppercase; line-height: 1.2; font-weight: 800; }
+        .btn-header {
+            background-color: var(--primary); color: #fff; padding: 12px 25px; border-radius: 50px;
+            font-size: 13px; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .btn-header:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+
+        /* ЗАГОЛОВОК СТРАНИЦЫ */
+        .page-header {
+            width: 100%; min-height: 200px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/header-background.png') center/cover no-repeat;
+            padding-top: 130px; padding-bottom: 50px;
+        }
+        .breadcrumbs { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: #fff; font-size: 14px; }
+        .breadcrumbs a { opacity: 0.6; color: #fff; }
+        .page-title { font-family: "Venus Rising", "Montserrat", sans-serif; font-size: 48px; color: #fff; margin: 0; letter-spacing: 2px; }
+
+        /* ЦЕНЫ И АККОРДЕОН */
+        .prices-section { padding: 80px 0; background: var(--bg-light); }
+        .notice-block {
+            padding: 25px; background: #fff; margin-bottom: 40px; border-radius: 5px;
+            border-left: 4px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 14px; font-weight: 500; color: #666;
+        }
+
+        .qa-item { background: #fff; margin-bottom: 15px; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .qa-trigger { 
+            padding: 25px 30px; display: flex; justify-content: space-between; align-items: center; 
+            cursor: pointer; transition: background 0.3s; 
+        }
+        .qa-trigger h2 { font-size: 18px; color: var(--dark); margin: 0; transition: color 0.3s; }
+        .qa-icon { 
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            background: var(--bg-light); border-radius: 50%; transition: 0.4s;
+        }
+        .qa-icon::before { content: '+'; color: var(--primary); font-size: 24px; font-weight: 400; }
+
+        /* Состояние при открытии */
+        .qa-item.active .qa-trigger { background: var(--primary); }
+        .qa-item.active .qa-trigger h2 { color: #fff; }
+        .qa-item.active .qa-icon { transform: rotate(45deg); background: rgba(255,255,255,0.2); }
+        .qa-item.active .qa-icon::before { color: #fff; }
+
+        .qa-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .qa-item.active .qa-answer { max-height: 5000px; padding: 20px 30px 40px; }
+
+        /* ТАБЛИЦЫ */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th { background: #f8f8f8; padding: 15px 10px; font-size: 10px; border: 1px solid #eee; color: #888; text-align: center; }
+        th.first-col { background: var(--primary); color: #fff; text-align: left; padding: 15px; font-size: 13px; width: 30%; }
+        td { padding: 12px 15px; border: 1px solid #eee; font-size: 14px; font-weight: 500; color: var(--text); }
+        tr:nth-child(even) { background: #fafafa; }
+        .cat-row { background: #f0f0f0 !important; font-weight: 800; text-transform: uppercase; font-size: 12px; color: var(--dark); }
+        .price-val { font-weight: 700; color: var(--primary); text-align: center; font-size: 15px; }
+        .service-name span { display: block; font-size: 11px; color: var(--primary); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+
+        /* ФУТЕР */
+        .footer { background: var(--dark); color: #fff; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+        .footer h3 { font-size: 16px; margin-bottom: 20px; color: #fff; }
+        .footer a { color: #999; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.3s; }
+        .footer a:hover { color: var(--primary); }
+
+        @media (max-width: 992px) {
+            .nav, .work-status { display: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .page-title { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-block">
+                <a href="index.html" class="logo">ЧИСТО<span>ГРАД</span></a>
+                <span class="logo-sub">автомобильный детейлинг</span>
+            </div>
+            <nav class="nav">
+                <a href="about.html">О нас</a>
+                <a href="services.html">Услуги</a>
+                <a href="price.html" style="color: var(--primary);">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="header-right">
+                <a href="tel:+73472663663" class="phone">+7 (347) 266‒36‒63</a>
+                <div class="work-status">
+                    <div class="status-text"><span>Работаем</span><span>круглосуточно</span></div>
+                </div>
+                <a href="https://t.me/ChistogradAMK" target="_blank" class="btn-header">Записаться</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ БЛОК -->
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a>
+                <svg width="6" height="10" viewBox="0 0 8 12" fill="none"><path d="M1 1L6 6L1 11" stroke="white" stroke-width="2" stroke-opacity="0.6"/></svg>
+                <span>Цены</span>
+            </div>
+            <h1 class="page-title">Цены</h1>
+        </div>
+    </div>
+
+    <main class="prices-section">
+        <div class="container">
+            
+            <div class="notice-block">
+                Администрация автомойки не несёт ответственность за повреждения ЛКП, связанные с некачественной окраской автомобиля, коррозией или дефектами, скрытыми грязью до начала оказания услуг.
+            </div>
+
+            <div class="qa-list">
+                
+                <!-- БЛОК 1: ПРЕЙСКУРАНТ (ЗАКРЫТ ПО УМОЛЧАНИЮ) -->
+                <div class="qa-item">
+                    <div class="qa-trigger" onclick="this.parentElement.classList.toggle('active')">
+                        <h2>Прейскурант с дисконтной картой</h2>
+                        <div class="qa-icon"></div>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="first-col">Для любителей своего авто</th>
+                                        <th>Средний класс</th>
+                                        <th>Бизнес / Универсал</th>
+                                        <th>Люкс</th>
+                                        <th>Паркетник</th>
+                                        <th>Вседорожник</th>
+                                        <th>Минивен / Тяжелые</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cat-row"><td colspan="7">Экстерьер / Кузов</td></tr>
+                                    <tr><td>Бесконтактная мойка + коврики</td><td class="price-val">692</td><td class="price-val">736</td><td class="price-val">784</td><td class="price-val">784</td><td class="price-val">872</td><td class="price-val">976</td></tr>
+                                    <tr><td>Мойка двигателя *</td><td class="price-val">692</td><td class="price-val">736</td><td class="price-val">784</td><td class="price-val">784</td><td class="price-val">872</td><td class="price-val">976</td></tr>
+                                    <tr><td>Мойка днища</td><td class="price-val">356</td><td class="price-val">392</td><td class="price-val">436</td><td class="price-val">436</td><td class="price-val">496</td><td class="price-val">540</td></tr>
+                                    
+                                    <tr class="cat-row"><td colspan="7">Интерьер / Салон</td></tr>
+                                    <tr><td>Уборка пылесосом салона</td><td class="price-val">320</td><td class="price-val">344</td><td class="price-val">368</td><td class="price-val">368</td><td class="price-val">392</td><td class="price-val">484</td></tr>
+                                    <tr><td>Влажная уборка салона</td><td class="price-val">320</td><td class="price-val">344</td><td class="price-val">368</td><td class="price-val">368</td><td class="price-val">392</td><td class="price-val">484</td></tr>
+                                    <tr><td>Чистка всех стекол</td><td class="price-val">344</td><td class="price-val">368</td><td class="price-val">392</td><td class="price-val">392</td><td class="price-val">416</td><td class="price-val">440</td></tr>
+                                    <tr><td>Обработка кожи кондиционером</td><td class="price-val">752</td><td class="price-val">792</td><td class="price-val">852</td><td class="price-val">852</td><td class="price-val">892</td><td class="price-val">940</td></tr>
+                                    
+                                    <tr class="cat-row"><td colspan="7">Детейлинг и Защита</td></tr>
+                                    <tr><td>3-х фазная мойка (Нано)</td><td class="price-val">1384</td><td class="price-val">1472</td><td class="price-val">1472</td><td class="price-val">1524</td><td class="price-val">1692</td><td class="price-val">1904</td></tr>
+                                    <tr><td>Консервация жидким полимером</td><td class="price-val">836</td><td class="price-val">836</td><td class="price-val">836</td><td class="price-val">836</td><td class="price-val">836</td><td class="price-val">836</td></tr>
+                                    <tr><td>Антидождь (Nano Force)</td><td class="price-val" colspan="6">от 1244 ₽</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- БЛОК 2: КОМПЛЕКСЫ -->
+                <div class="qa-item">
+                    <div class="qa-trigger" onclick="this.parentElement.classList.toggle('active')">
+                        <h2>Комплексная мойка с дисконтной картой</h2>
+                        <div class="qa-icon"></div>
+                    </div>
+                    <div class="qa-answer">
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="first-col">Пакет услуг</th>
+                                        <th>Средний класс</th>
+                                        <th>Бизнес / Универсал</th>
+                                        <th>Люкс</th>
+                                        <th>Паркетник</th>
+                                        <th>Вседорожник</th>
+                                        <th>Минивен</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="service-name"><span>Стандарт</span>Бесконтактная мойка + коврики + пылесос + влажная уборка</td>
+                                        <td class="price-val">1176</td><td class="price-val">1328</td><td class="price-val">1408</td><td class="price-val">1408</td><td class="price-val">1540</td><td class="price-val">1808</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="service-name"><span>Люкс</span>3-х фазная мойка + стекла + пылесос + влажная уборка + продувка</td>
+                                        <td class="price-val">2360</td><td class="price-val">2564</td><td class="price-val">2692</td><td class="price-val">2692</td><td class="price-val">2908</td><td class="price-val">3312</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="service-name"><span>Премиум</span>Люкс + жидкий полимер + полировка пластика салона</td>
+                                        <td class="price-val">3072</td><td class="price-val">3288</td><td class="price-val">3460</td><td class="price-val">3460</td><td class="price-val">3644</td><td class="price-val">3992</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2 style="font-size: 20px;">ЧИСТО<span>ГРАД</span></h2>
+                    <p style="color: #666; font-size: 12px; margin-top: 10px;">Профессиональный уход за вашим авто в Уфе.</p>
+                </div>
+                <div>
+                    <h3>Меню</h3>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О нас</a>
+                    <a href="services.html">Услуги</a>
+                </div>
+                <div>
+                    <h3>Услуги</h3>
+                    <a href="#">Мойка кузова</a>
+                    <a href="#">Химчистка</a>
+                    <a href="#">Полировка</a>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <a href="tel:+73472663663" style="color: #fff; font-weight: 700;">+7 (347) 266-36-63</a>
+                    <p style="color: #666; font-size: 14px;">ул. Бакалинская, 13/1</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: #555; font-size: 12px; margin-top: 20px;">© 2026 Чистоград. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
